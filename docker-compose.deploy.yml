@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  compnaydetails:    
+    build: CompnayDetails
+    container_name: companyapp
+    ports: 
+      - "3001:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  stockmarket:
+    build: StockMarket
+    container_name: stockapp
+    ports: 
+      - "3002:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  stockreport:
+    build: StockReport
+    container_name: reportapp   
+    ports: 
+      - "3003:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+  
+  ocelotapi:
+    build: OcelotpiGateway
+    container_name: ocelotapp
+    depends_on:
+      - compnaydetails
+      - stockmarket
+      - stockreport
+    ports: 
+      - "5031:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Dev
+      
+  companystock:
+    build: CompanyStocks
+    container_name: companystock
+    ports: 
+      - "3004:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development

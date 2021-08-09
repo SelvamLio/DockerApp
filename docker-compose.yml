@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  compnaydetails:    
+    build: CompnayDetails
+    container_name: companyapp
+
+  stockmarket:
+    build: StockMarket
+    container_name: stockapp
+
+  stockreport:
+    build: StockReport
+    container_name: reportapp   
+  
+  ocelotapi:
+    build: OcelotpiGateway
+    container_name: ocelotapp
+    depends_on:
+      - compnaydetails
+      - stockmarket
+      - stockreport
+  companystock:
+    build: CompanyStocks
+    container_name: companystock

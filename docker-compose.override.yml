@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  compnaydetails:
+    ports: 
+      - "3001:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  stockmarket:
+    ports: 
+      - "3002:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+              
+  stockreport:
+    ports: 
+      - "3003:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+              
+  ocelotapi:
+    ports: 
+      - "5031:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Dev
+    
+  companystock:
+    ports: 
+      - "3004:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
